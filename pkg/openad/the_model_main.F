@@ -319,6 +319,10 @@ c     == external ==
 
 CEOP
 
+C     EMULATOR INITIALIZATION
+      RPE_ACTIVE = .TRUE.
+      RPE_DEFAULT_SBITS = 35
+
 C--   set default:
       exst     = .TRUE.
       lastdiva = .TRUE.
