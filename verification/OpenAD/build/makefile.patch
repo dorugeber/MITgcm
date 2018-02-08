@@ -1,0 +1,34 @@
+--- Makefilez	2018-02-08 11:30:52.923769565 +0000
++++ Makefile	2018-02-08 11:48:51.137639731 +0000
+@@ -83,7 +83,7 @@
+ NOOPTFILES =  ini_masks_etc.F
+ NOOPTFLAGS = -O0
+ # Flags and libraries needed for linking
+-LIBS =  -lnetcdff -lnetcdf
++LIBS =  -L../../../../rpe/lib -lrpe -lnetcdff -lnetcdf
+ # Name of the makefile
+ MAKEFILE = Makefile
+ # Name of the make program
+@@ -1555,18 +1555,18 @@
+ .F.f:
+ 	$(CPPCMD)  > $@
+ .f.o:
+-	$(FC) $(FFLAGS) $(FOPTIM) -c $<
++	$(FC) $(FFLAGS) $(FOPTIM) -I../../../../rpe/modules -c $<
+ .F.o:
+-	$(FC) $(FFLAGS) $(FOPTIM) -c $<
++	$(FC) $(FFLAGS) $(FOPTIM) -I../../../../rpe/modules -c $<
+ .F90.f90:
+ 	$(CPPCMD)  > $@
+ .FF90.ff90:
+ 	$(CPPCMD)  > $@
+ .f90.o:
+-	$(F90C) $(F90FLAGS) $(F90OPTIM) -c $<
++	$(F90C) $(F90FLAGS) $(F90OPTIM) -I../../../../rpe/modules -c $<
+ .ff90.o:
+ 	cp $< $(basename  $<).f90
+-	$(F90C) $(F90FLAGS) $(F90OPTIM) -c $(F90FIXEDFORMAT) $(basename  $<).f90
++	$(F90C) $(F90FLAGS) $(F90OPTIM) -I../../../../rpe/modules -c $(F90FIXEDFORMAT) $(basename  $<).f90
+ .c.o:
+ 	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $<
+ .flow.flowdir:
