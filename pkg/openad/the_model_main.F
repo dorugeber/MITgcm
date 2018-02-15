@@ -310,6 +310,8 @@ C     Temprarily change precision to agree with ctrlprec
 #ifdef OAD_DEBUG
       INTEGER i1, i2, i3, i4, i5
 #endif
+      CHARACTER*(3) rpeprec_str
+      INTEGER rpeprec
 C <<-- OpenAD
 
 C     !EXTERNAL VARIABLES:
@@ -320,8 +322,10 @@ c     == external ==
 CEOP
 
 C     EMULATOR INITIALIZATION
+      call get_environment_variable("rpeprec", rpeprec_str)
+      read(rpeprec_str, *) rpeprec
       RPE_ACTIVE = .TRUE.
-      RPE_DEFAULT_SBITS = 35
+      RPE_DEFAULT_SBITS = rpeprec
 
 C--   set default:
       exst     = .TRUE.
