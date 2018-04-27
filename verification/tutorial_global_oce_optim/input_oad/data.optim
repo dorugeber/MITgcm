@@ -4,9 +4,14 @@
 # ********************************
  &OPTIM
  optimcycle=0,
- numiter=1,
- nfunc=3,
- fmin=5.74,
+ numiter=1000,
+ nfunc=2,
+#dfminFrac=0.4,
  iprint=10,
- nupdate=8,
- &
+ nupdate=10,
+ &end
+#
+ &M1QN3
+ coldstart = .FALSE.,
+ &end
+#
