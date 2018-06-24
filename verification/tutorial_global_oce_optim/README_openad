@@ -5,6 +5,7 @@ Tutorial Example: "Global Ocean State Estimation"
 Configure and compile the code:
   cd build
   ../../../tools/genmake2 -oad -mods ../code_oad
+  patch < makefile.patch
   make adAll
   cd ..
 
@@ -18,7 +19,7 @@ To run:
   cp ../../../optim_m1qn3/src/optim.x scratch/
 
   To run once: make directory mitgcmtemp in /dev/shm
-  oadcachedir=/dev/shm/mitgcmtemp/ ./mitgcmuv_ad
+  oadcachedir=/dev/shm/mitgcmtemp/ rpeprec=53 ./mitgcmuv_ad
   OR
   To optimize: copy run_optim.py to scratch/
   python3 run_optim.py

@@ -11,7 +11,7 @@ for ii in range(15):
     lines[5] = " optimcycle=" + str(ii) + ","
     lines[8] = "#dfminFrac=0.4,"
     open("data.optim", "w").write('\n'.join(lines))
-    os.system("oadcachedir=" + childdir + " ./mitgcmuv_ad > aaatemp.txt")
+    os.system("oadcachedir=" + childdir + " rpeprec=53 ./mitgcmuv_ad > aaatemp.txt")
     os.rename("aaatemp.txt", "aaa" + str(ii) + ".txt")
 
     lines = open("data.optim").read().splitlines()
