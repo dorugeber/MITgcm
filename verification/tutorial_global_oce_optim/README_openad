@@ -1,0 +1,32 @@
+Tutorial Example: "Global Ocean State Estimation"
+(Global Ocean State Estimation at 4 degree resolution)
+=================================================
+
+Configure and compile the code:
+  cd build
+  ../../../tools/genmake2 -oad -mods ../code_oad
+  make adAll
+  cd ..
+
+To run:
+  cp -r input_oad/ scratch/
+  cd scratch
+  ./prepare_run
+  cd ..
+
+  cp build/mitgcmuv_ad scratch/
+  cp ../../../optim_m1qn3/src/optim.x scratch/
+
+  To run once: make directory mitgcmtemp in /dev/shm
+  oadcachedir=/dev/shm/mitgcmtemp/ ./mitgcmuv_ad
+  OR
+  To optimize: copy run_optim.py to scratch/
+  python3 run_optim.py
+
+  To visualise output:
+  increment in xx_hfluxm.00000... meta/data files
+  gradient in adxx_hfluxm.00000... meta/data files
+
+  Copy files with cp scratch/xx_hfluxm* scratch/adxx_hfluxm* matlab/
+  Use rdmds.m in utils/matlab, e.g.
+  A = rdmds('xx_hfluxm.0000000001');A(A==0.0)=NaN;z=imagesc(A');set(z,'alphadata',~isnan(A));axis("xy");colorbar;
