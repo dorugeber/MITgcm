@@ -51,6 +51,7 @@ else
   CC=gcc
   FC=gfortran
   F90C=gfortran
+  LINK="$FC -static"
 fi
 
 DEFINES='-DWORDLENGTH=4 -DNML_TERMINATOR'
