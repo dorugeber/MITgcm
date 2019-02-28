@@ -78,6 +78,7 @@ include "mpif.h"
 #endif
     integer rank, mpirc
     character*128 fname ! file name
+    character*50 oadcachedir
     ! get unit
     rank=0
     call cp_findunit()
@@ -86,7 +87,8 @@ include "mpif.h"
 #ifdef ALLOW_USE_MPI
     call mpi_comm_rank(MPI_COMM_WORLD,rank, mpirc)
 #endif
-    write(fname,'(A,I3.3,A,I5.5)') 'oad_cp.',rank,'.',cp_file_number
+    call get_environment_variable("oadcachedir", oadcachedir)
+    write(fname,'(A,A,I3.3,A,I5.5)') trim(oadcachedir),'oad_cp.',rank,'.',cp_file_number
     open( UNIT=cp_io_unit,FILE=TRIM(fname),FORM='unformatted',STATUS='UNKNOWN' )
   end subroutine 
 
