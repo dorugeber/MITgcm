@@ -142,7 +142,7 @@ c we may need these for the checkpointing
 #endif
          currIter=0
          jointCPcount=cp_fNumber()
-         initialized=rvInit(nTimeSteps,120,
+         initialized=rvInit(nTimeSteps,40,
      +                      errorMsg,theAction)
          IF (.NOT.initialized) WRITE(*,'(A,A)') 'Error: ', errorMsg
          do while (theAction%actionFlag/=rvDone)
