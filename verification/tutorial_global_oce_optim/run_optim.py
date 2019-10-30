@@ -1,10 +1,16 @@
 import os
 import shutil
+import random
+import time
 
 mypid = os.getpid()
 childdir = "/dev/shm/mitgcm-" + str(mypid) + "/"
 print("OAD checkpoints being saved in", childdir)
 os.mkdir(childdir)
+
+randdelay = random.randrange(10, 120)
+print("Sleeping for", randdelay, "seconds...")
+time.sleep(randdelay)
 
 for ii in range(15):
     lines = open("data.optim").read().splitlines()
