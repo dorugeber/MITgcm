@@ -5,6 +5,7 @@
 !#########################################################
         module OAD_active
         use w2f__types
+        use rp_emulator
         implicit none
         private :: runTimeErrorStop, shapeChange
         public :: active
@@ -39,7 +40,7 @@
 #ifdef SCALARNDI
 # define DINIT
 #else
-# define DINIT =0.0d0
+# define DINIT
 #endif
 
         !
@@ -47,13 +48,13 @@
         !  with no initialization
         !
         type active
-          sequence
+          ! sequence
           real(w2f__8) :: v 
 #ifndef TRACE
           ! initialization does not work for active variables
           ! inside of common block, such as in boxmodel
           ! initialization is required for correct adjoint
-          real(w2f__8) VECTOR_DIM :: d DINIT
+          type(rpe_var) VECTOR_DIM :: d DINIT
 #endif
         end type
 #ifndef TRACE
